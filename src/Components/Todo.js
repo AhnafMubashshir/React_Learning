@@ -27,6 +27,7 @@ const Todo = ({ todoIndex, todoDescription, removeFromTODOList, editTODOList }) 
 
     return (
         <Card
+        className="w-64 mx-auto mt-4"
             style={{
                 width: 300,
             }}
