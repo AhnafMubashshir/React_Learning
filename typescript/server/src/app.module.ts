@@ -1,9 +1,15 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TodoDB, TodoSchema } from './schemas/todo.schema';
 
 @Module({
-  imports: [],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost:27017'),
+    MongooseModule.forFeature([{ name: TodoDB.name, schema: TodoSchema }]),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

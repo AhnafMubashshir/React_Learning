@@ -5,6 +5,7 @@ import axios from "axios";
 import Todo from "./Todo";
 
 interface FormValues {
+  _id: any;
   todo: string;
 }
 
@@ -48,14 +49,14 @@ const Home = () => {
 
   async function removeFromTODOList(index: number) {
     const response = await axios.delete(
-      `http://localhost:5000/deleteTodo/${index}`
+      `http://localhost:5000/deleteTodo/${todoList[index]._id}`
     );
     setTodoList(response.data);
   }
 
   async function editTODOList(index: number, updatedValue: string) {
     const response = await axios.put(
-      `http://localhost:5000/updateTodo/${index}`,
+      `http://localhost:5000/updateTodo/${todoList[index]._id}`,
       { todo: updatedValue }
     );
     setTodoList(response.data);
